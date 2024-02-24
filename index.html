@@ -1,26 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Fithub</title>
+    <title>FitHub</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-    <h1>
-        FitHub
-    </h1>
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-    </nav>
-    
+    <header>
+        <h1>FitHub</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+    <main>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h2>Exercise Suggestions</h2>
+                        <p>Get personalized exercise recommendations based on your goals and fitness level.</p>
+                        <button class="get-started-btn">Get Started</button>
+                    </div>
+                    <div class="card-back">
+                        <h2>Enter Body Part</h2>
+                        <p>Select the body part you want to focus on:</p>
+                        <select id="body-part">
+                            <option value="chest">Chest</option>
+                            <option value="back">Back</option>
+                            <option value="legs">Legs</option>
+                            <option value="arms">Arms</option>
+                            <option value="core">Core</option>
+                        </select>
+                        <button class="recommend-exercise-btn">Recommend Exercise</button>
+                        <div id="recommended-exercises"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h2>Diet Suggestions</h2>
+                        <p>Get a personalized diet plan based on your weight, height, and age.</p>
+                        <button class="get-started-btn">Get Started</button>
+                    </div>
+                    <div class="card-back">
+                        <h2>Enter Your Details</h2>
+                        <p>Fill in your information to get a personalized diet plan:</p>
+                        <form id="diet-form">
+                            <div>
+                                <label for="height">Height (cm):</label>
+                                <input type="number" id="height" required>
+                            </div>
+                            <div>
+                                <label for="weight">Weight (kg):</label>
+                                <input type="number" id="weight" required>
+                            </div>
+                            <div>
+                                <label for="age">Age:</label>
+                                <input type="number" id="age" required>
+                            </div>
+                            <button type="submit">Get Diet Plan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
 </body>
-
 </html>
