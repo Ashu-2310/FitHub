@@ -1,57 +1,51 @@
 body {
-    background-color: #f0f8ff;  /* Light blue background */
-    font-family: sans-serif;
-    color: #333;  /* Darker gray for text */
-  }
-  
-  .card {
-    background-color: #fff;  /* White card background */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    padding: 20px;
-  }
-  
-  .card h2 {
-    color: #f06c75;  /* Coral pink for headings */
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    color: #777;  /* Lighter gray for body text */
-  }
-  
-  .get-started-btn {
-    background-color: #fa95a0;  /* Salmon pink for button */
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .get-started-btn:hover {
-    background-color: #f77080;  /* Darker pink on hover */
-  }
-  
-  .card-back {
-    /* Customize styles for the flipped card back */
-    background-color: #f8f2f2;  /* Light gray background */
-    color: #333;
-  }
-  
-  .card-back select {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .recommend-exercise-btn,
-  .diet-form button {
-    /* Customize buttons for specific sections */
-  }
-  
-  /* You can add more specific styles for different elements like headers, forms, etc. */
-  
+  background-color: #f0f8ff;
+  font-family: sans-serif;
+  color: #333;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.card h2 {
+  color: #f06c75;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #777;
+}
+
+.get-started-btn {
+  background-color: #fa95a0;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.get-started-btn:hover {
+  background-color: #f77080;
+}
+
+.card-back {
+  background-color: #f8f2f2;
+  color: #333;
+}
+
+.card-back select {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.recommend-exercise-btn,
+.diet-form button {}
