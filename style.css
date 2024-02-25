@@ -3,6 +3,12 @@ body {
   font-family: sans-serif;
   color: #333;
 }
+h1{
+  text-align: center;
+}
+a{
+  text-decoration: none;
+}
 
 .card {
   background-color: #fff;
