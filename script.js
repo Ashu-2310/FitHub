@@ -21,7 +21,7 @@ cards.forEach(card => {
     //     // You can replace this with your logic for displaying the exercises on the card
     //   }
     //   );
-    displaydata(selectedBodyPart)
+    displaydata(selectedBodyPart);
   });
 
 
@@ -39,9 +39,8 @@ cards.forEach(card => {
   });
 });
 
-// Replace these functions with your actual API calls and display logic
 async function getExercisesForBodyPart(bodyPart) {
-  const url = `https://work-out-api1.p.rapidapi.com/search?Muscles/${bodyPart}`;
+  const url = `https://work-out-api1.p.rapidapi.com/search?Muscles=${bodyPart}`;
   const options = {
     method: 'GET',
     headers: {
@@ -58,18 +57,29 @@ async function getExercisesForBodyPart(bodyPart) {
     console.error(error);
   }
 }
+
 async function displaydata(x) {
-  const c = document.querySelector("#recommended-exercises")
-  const data = await getExercisesForBodyPart(x);
+  const container = document.querySelector("#recommended-exercises");
+  let data = await getExercisesForBodyPart(x);
   if (!data) { return; }
-  // data.forEach(item => {
-  //   const body = document.createElement('p');
-  //   body.textContent = item.body;
-  //   c.appendChild(body);
+  data = JSON.parse(data);
 
-
-  // });
-  document.getElementById('recommended-exercises').insertAdjacentHTML('afterbegin', data)
+  for (let i = 0; i < 3 && i < data.length; i++) {
+    const exercise = data[i];
+    const html = `
+      <div>
+        <p>Muscle: "${exercise.Muscles}"</p>
+        <p>Work Out: "${exercise.WorkOut}"</p>
+        <p>Sets: "3-4"</p>
+        <p>Reps: "8-12"</p>
+        <p>Breaks: 1</p>
+        <p>Equipments: "${exercise.Equipment}"</p>
+        <p>Explanation: "${exercise.Explaination}"</p>
+        <br></br>
+      </div>
+    `;
+    container.insertAdjacentHTML('beforeend', html);
+  }
 }
 
 
