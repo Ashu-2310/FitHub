@@ -6,7 +6,6 @@ cards.forEach(card => {
   const recommendExerciseBtn = document.querySelector('.recommend-exercise-btn');
   recommendExerciseBtn.addEventListener('click', () => {
     const selectedBodyPart = bodyPartSelect.value;
-    console.log('bb')
     displaydata(selectedBodyPart);
   });
 
@@ -46,7 +45,7 @@ async function getExercisesForBodyPart(bodyPart) {
 
 async function displaydata(x) {
   const container = document.querySelector("#recommended-exercises");
-  console.log('b')
+  container.innerHTML = '';
   let data =await getExercisesForBodyPart(x);
   if (!data) { return; }
   data = JSON.parse(data);
