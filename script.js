@@ -64,7 +64,7 @@ function getExercisesForBodyPart(bodyPart) {
 
 
 async function getDietPlan(height, weight, age) {
-  const url = 'https://mega-fitness-calculator1.p.rapidapi.com/ibw?weight=67&height=168&gender=female';
+  const url = 'https://mega-fitness-calculator1.p.rapidapi.com/tdee?weight=81&height=172&activitylevel=ma&age=26&gender=male';
   const options = {
     method: 'GET',
     headers: {
