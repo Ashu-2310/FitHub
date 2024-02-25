@@ -1,0 +1,27 @@
+h2{
+    padding: 20px 250px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: azure;
+}
+
+body {
+    background-color: #f0f8ff;
+    font-family: sans-serif;
+    color: black;
+    background-position:center ;
+  }
+  h1{
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 5;
+    font-size: 80px;
+    color: white;
+  }
+  img.icon {
+    position:fixed;
+    height: auto;
+    top: 0px;
+    left: 0px; 
+    width: 105px;
+  }
+ 
