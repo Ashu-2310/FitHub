@@ -1,26 +1,12 @@
 const cards = document.querySelectorAll('.card');
-
+console.log('hello')
 cards.forEach(card => {
-  const getStartedBtn = card.querySelector('.get-started-btn');
-  const cardFront = card.querySelector('.card-front');
-  const cardBack = card.querySelector('.card-back');
-
-  getStartedBtn.addEventListener('click', () => {
-    card.classList.toggle('flip');
-  });
-
   // Exercise recommendation
-  const bodyPartSelect = cardBack.querySelector('#body-part');
-  const recommendExerciseBtn = cardBack.querySelector('.recommend-exercise-btn');
+  const bodyPartSelect = document.querySelector('#body-part');
+  const recommendExerciseBtn = document.querySelector('.recommend-exercise-btn');
   recommendExerciseBtn.addEventListener('click', () => {
     const selectedBodyPart = bodyPartSelect.value;
-    // getExercisesForBodyPart(selectedBodyPart)
-    //   .then(exercises => {
-    //     // Display the recommended exercises in the card somehow
-    //     displaydata();
-    //     // You can replace this with your logic for displaying the exercises on the card
-    //   }
-    //   );
+    console.log('bb')
     displaydata(selectedBodyPart);
   });
 
@@ -44,7 +30,7 @@ async function getExercisesForBodyPart(bodyPart) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '2bca16261amshd1c699c1f492828p1921cejsn0ab8e79d46fe',
+      'X-RapidAPI-Key': '77c4df35admsh3ebeb87e58bd4a5p14f297jsn98ec9dc165fb',
       'X-RapidAPI-Host': 'work-out-api1.p.rapidapi.com'
     }
   };
@@ -60,7 +46,8 @@ async function getExercisesForBodyPart(bodyPart) {
 
 async function displaydata(x) {
   const container = document.querySelector("#recommended-exercises");
-  let data = await getExercisesForBodyPart(x);
+  console.log('b')
+  let data =await getExercisesForBodyPart(x);
   if (!data) { return; }
   data = JSON.parse(data);
 
