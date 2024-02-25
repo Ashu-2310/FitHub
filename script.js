@@ -38,28 +38,23 @@ cards.forEach(card => {
 });
 
 // Replace these functions with your actual API calls and display logic
-function getExercisesForBodyPart(bodyPart) {
+async function getExercisesForBodyPart(bodyPart) {
+  const url = 'https://work-out-api1.p.rapidapi.com/search?Muscles=biceps';
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'fecf7ee8ccmsh7a924da7236bdfap1b1a46jsne5baff93fdec', // Replace with your actual API key
-      'Content-Type': 'application/json'
+      'X-RapidAPI-Key': '2bca16261amshd1c699c1f492828p1921cejsn0ab8e79d46fe',
+      'X-RapidAPI-Host': 'work-out-api1.p.rapidapi.com'
     }
   };
 
-  const url = `https://rapidapi.com/apininjas/api/exercises-by-muscle-group/${bodyPart}`;
-
-  return fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
-      // Extract the exercise names from the response data
-      const exerciseNames = data.exercises.map(exercise => exercise.name);
-      return exerciseNames;
-    })
-    .catch(error => {
-      console.error('Error fetching exercises:', error);
-      return []; // Return an empty array if the API call fails
-    });
+  try {
+    const response = await fetch(url, options);
+    const result = await response.text();
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 
@@ -87,3 +82,4 @@ async function getDietPlan(height, weight, age) {
   //         ]
   //     };
 }
+console.log(selectedBodyPart)
