@@ -14,12 +14,14 @@ cards.forEach(card => {
   const recommendExerciseBtn = cardBack.querySelector('.recommend-exercise-btn');
   recommendExerciseBtn.addEventListener('click', () => {
     const selectedBodyPart = bodyPartSelect.value;
-    getExercisesForBodyPart(selectedBodyPart)
-      .then(exercises => {
-        // Display the recommended exercises in the card somehow
-        console.log('Recommended exercises for', selectedBodyPart, ':', exercises);
-        // You can replace this with your logic for displaying the exercises on the card
-      });
+    // getExercisesForBodyPart(selectedBodyPart)
+    //   .then(exercises => {
+    //     // Display the recommended exercises in the card somehow
+    //     displaydata();
+    //     // You can replace this with your logic for displaying the exercises on the card
+    //   }
+    //   );
+    displaydata(selectedBodyPart);
   });
 
 
@@ -37,9 +39,8 @@ cards.forEach(card => {
   });
 });
 
-// Replace these functions with your actual API calls and display logic
 async function getExercisesForBodyPart(bodyPart) {
-  const url = 'https://work-out-api1.p.rapidapi.com/search?Muscles=biceps';
+  const url = `https://work-out-api1.p.rapidapi.com/search?Muscles=${bodyPart}`;
   const options = {
     method: 'GET',
     headers: {
@@ -51,11 +52,36 @@ async function getExercisesForBodyPart(bodyPart) {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
-    console.log(result);
+    return result;
   } catch (error) {
     console.error(error);
   }
 }
+
+async function displaydata(x) {
+  const container = document.querySelector("#recommended-exercises");
+  let data = await getExercisesForBodyPart(x);
+  if (!data) { return; }
+  data = JSON.parse(data);
+
+  for (let i = 0; i < 3 && i < data.length; i++) {
+    const exercise = data[i];
+    const html = `
+      <div>
+        <p>Muscle: "${exercise.Muscles}"</p>
+        <p>Work Out: "${exercise.WorkOut}"</p>
+        <p>Sets: "3-4"</p>
+        <p>Reps: "8-12"</p>
+        <p>Breaks: 1</p>
+        <p>Equipments: "${exercise.Equipment}"</p>
+        <p>Explanation: "${exercise.Explaination}"</p>
+        <br></br>
+      </div>
+    `;
+    container.insertAdjacentHTML('beforeend', html);
+  }
+}
+
 
 
 async function getDietPlan(height, weight, age) {
@@ -82,4 +108,3 @@ async function getDietPlan(height, weight, age) {
   //         ]
   //     };
 }
-console.log(selectedBodyPart)
