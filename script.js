@@ -14,12 +14,14 @@ cards.forEach(card => {
   const recommendExerciseBtn = cardBack.querySelector('.recommend-exercise-btn');
   recommendExerciseBtn.addEventListener('click', () => {
     const selectedBodyPart = bodyPartSelect.value;
-    getExercisesForBodyPart(selectedBodyPart)
-      .then(exercises => {
-        // Display the recommended exercises in the card somehow
-        console.log('Recommended exercises for', selectedBodyPart, ':', exercises);
-        // You can replace this with your logic for displaying the exercises on the card
-      });
+    // getExercisesForBodyPart(selectedBodyPart)
+    //   .then(exercises => {
+    //     // Display the recommended exercises in the card somehow
+    //     displaydata();
+    //     // You can replace this with your logic for displaying the exercises on the card
+    //   }
+    //   );
+    displaydata(selectedBodyPart)
   });
 
 
@@ -39,7 +41,7 @@ cards.forEach(card => {
 
 // Replace these functions with your actual API calls and display logic
 async function getExercisesForBodyPart(bodyPart) {
-  const url = 'https://work-out-api1.p.rapidapi.com/search?Muscles=biceps';
+  const url = `https://work-out-api1.p.rapidapi.com/search?Muscles/${bodyPart}`;
   const options = {
     method: 'GET',
     headers: {
@@ -51,11 +53,25 @@ async function getExercisesForBodyPart(bodyPart) {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
-    console.log(result);
+    return result;
   } catch (error) {
     console.error(error);
   }
 }
+async function displaydata(x) {
+  const c = document.querySelector("#recommended-exercises")
+  const data = await getExercisesForBodyPart(x);
+  if (!data) { return; }
+  // data.forEach(item => {
+  //   const body = document.createElement('p');
+  //   body.textContent = item.body;
+  //   c.appendChild(body);
+
+
+  // });
+  document.getElementById('recommended-exercises').insertAdjacentHTML('afterbegin', data)
+}
+
 
 
 async function getDietPlan(height, weight, age) {
@@ -82,4 +98,3 @@ async function getDietPlan(height, weight, age) {
   //         ]
   //     };
 }
-console.log(selectedBodyPart)
